@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MTV Cloud Minecraft Hosting – Engineered for Performance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables for a clean, modern dark theme with vibrant accents */
+    :root {
+      --color-background-dark: #0A0A0A;
+      --color-background-medium: #151515;
+      --color-card-background: #1F1F1F;
+      --color-text-light: #E0E0E0;
+      --color-text-subtle: #A0A0A0;
+      --color-primary-accent: #8A2BE2; /* Royal Purple */
+      --color-secondary-accent: #FFD700; /* Gold Yellow */
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --shadow-elevation-1: 0 4px 15px rgba(0, 0, 0, 0.3);
+      --shadow-elevation-2: 0 8px 25px rgba(0, 0, 0, 0.4);
+      --transition-speed: 0.3s ease-in-out;
+    }
+
+    body {
+      background-color: var(--color-background-dark);
+      color: var(--color-text-light);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      position: relative;
+    }
+
+    /* Gradient Overlay for a subtle cool effect */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(138, 43, 226, 0.08) 0%, transparent 20%),
+                  radial-gradient(circle at bottom right, rgba(255, 215, 0, 0.06) 0%, transparent 20%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* General Typography */
+    h1, h2, h3 {
+      font-family: 'Oxanium', sans-serif; /* Techy, strong header font */
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+    }
+
+    h1 {
+      font-size: 4.2rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-primary-accent); /* Purple for primary impact */
+      text-shadow: 0 0 20px rgba(138, 43, 226, 0.5), 0 0 30px rgba(138, 43, 226, 0.3);
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2.5rem;
+      color: var(--color-secondary-accent); /* Yellow for secondary impact */
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--color-text-light);
+    }
+
+    p {
+      font-weight: 300;
+      color: var(--color-text-subtle);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-spacing {
+      padding: 6rem 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(160deg, var(--color-background-medium) 0%, var(--color-background-dark) 100%);
+      text-align: center;
+      padding: 8rem 0 6rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://via.placeholder.com/1920x1080/0A0A0A/0A0A0A?text=Minecraft+Blocks+BG') no-repeat center center; /* Placeholder for a subtle Minecraft-themed background image */
+        background-size: cover;
+        opacity: 0.05; /* Very subtle */
+        filter: grayscale(100%);
+        animation: panBackground 60s linear infinite alternate; /* Slow, subtle background movement */
+        z-index: 0;
+    }
+
+    @keyframes panBackground {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+    }
+
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero p {
+      font-size: 1.35rem;
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      color: var(--color-text-light);
+      font-weight: 400;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    /* CTA Button in Hero */
+    .hero .deploy-btn {
+        margin-top: 1.5rem;
+        font-size: 1.25rem;
+        padding: 16px 40px;
+    }
+
+    /* Features Section */
+    .features {
+      background-color: var(--color-background-medium);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 4rem;
+    }
+
+    .feature-box {
+      background: var(--color-card-background);
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-elevation-1);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-elevation-2);
+      border-color: var(--color-primary-accent); /* Vibrant border on hover */
+    }
+
+    .feature-box h3 {
+      color: var(--color-secondary-accent); /* Yellow for feature titles */
+      margin-bottom: 1rem;
+    }
+
+    .feature-box p {
+      font-size: 1.05rem;
+      flex-grow: 1;
+    }
+
+    /* Plans Section */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      justify-content: center;
+      margin-top: 4rem;
+    }
+
+    .plan-card {
+      background: var(--color-card-background);
+      border-radius: 12px;
+      box-shadow: var(--shadow-elevation-1);
+      padding: 3.5rem 2rem 3rem 2rem;
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-elevation-2);
+      border-color: var(--color-secondary-accent); /* Vibrant border on hover */
+    }
+
+    .plan-title {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--color-text-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .plan-specs {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      color: var(--color-text-subtle);
+      flex-grow: 1;
+    }
+
+    .plan-price {
+      font-size: 2.5rem;
+      color: var(--color-primary-accent); /* Purple for prices */
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    }
+
+    .deploy-btn {
+      background: var(--color-primary-accent);
+      color: var(--color-text-light);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-speed);
+      box-shadow: var(--shadow-elevation-1);
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .deploy-btn:hover {
+      background: var(--color-secondary-accent);
+      color: var(--color-background-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Highlight the "Best Value" plan */
+    .plan-card.highlight {
+        border-color: var(--color-secondary-accent);
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.2) inset;
+        background: linear-gradient(135deg, var(--color-card-background), rgba(255, 215, 0, 0.1));
+        transform: translateY(-10px);
+    }
+    .plan-card.highlight:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 0 35px rgba(255, 215, 0, 0.6), 0 0 50px rgba(255, 215, 0, 0.3) inset;
+    }
+    .plan-card.highlight .plan-price {
+        color: var(--color-secondary-accent);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+    .plan-card.highlight .deploy-btn {
+        background: var(--color-secondary-accent);
+        color: var(--color-background-dark);
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    }
+    .plan-card.highlight .deploy-btn:hover {
+        background: var(--color-primary-accent);
+        color: var(--color-text-light);
+        box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+    }
+
+    /* EPYC Note */
+    .epyc-note {
+      background-color: var(--color-background-medium);
+      color: var(--color-text-light);
+      text-align: center;
+      padding: 3rem;
+      border-radius: 12px;
+      margin: 5rem auto 3rem auto;
+      font-size: 1.25rem;
+      max-width: 900px;
+      box-shadow: var(--shadow-elevation-1);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-speed);
+    }
+    .epyc-note:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-elevation-2);
+        border-color: var(--color-primary-accent);
+    }
+
+    .epyc-note strong {
+      color: var(--color-secondary-accent); /* Yellow for the strong highlight */
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    }
+
+    /* Reviews Section */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3.5rem;
+    }
+
+    .review-card {
+      background: var(--color-card-background);
+      color: var(--color-text-light);
+      padding: 2.5rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      box-shadow: var(--shadow-elevation-1);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-speed);
+      text-align: left;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-elevation-2);
+      border-color: var(--color-secondary-accent);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-background-dark);
+      color: var(--color-text-subtle);
+      text-align: center;
+      padding: 2.5rem 0;
+      margin-top: auto;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      h1 { font-size: 3.5rem; }
+      h2 { font-size: 2.4rem; }
+      .section-spacing { padding: 5rem 0; }
+      .hero { padding: 7rem 0 5rem 0; }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.8rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.6rem; }
+      .hero p { font-size: 1.2rem; margin-bottom: 2rem;}
+      .section-spacing { padding: 4rem 0; }
+      .hero { padding: 6rem 0 4rem 0; }
+      .features-grid, .plans-grid, .reviews-grid { gap: 2rem; }
+      .feature-box, .plan-card, .review-card, .epyc-note { padding: 2rem; }
+      .deploy-btn { padding: 12px 28px; font-size: 1rem;}
+    }
+
+    @media (max-width: 576px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      .hero { padding: 5rem 0 3rem 0; }
+      .hero p { font-size: 1.05rem; }
+      .features-grid, .plans-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .plan-card { max-width: 90%; margin: 0 auto; }
+      .epyc-note { margin: 4rem 1rem 2.5rem 1rem; padding: 1.8rem; font-size: 1.1rem;}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-content">
+      <h1>MTV Cloud Minecraft Hosting</h1>
+      <h2>Engineered for Ultimate Performance</h2>
+      <p>Experience unparalleled Minecraft hosting with instant setup, cutting-edge hardware, and robust DDoS protection. Your server, powered by AMD EPYC 9000 Series, is ready for epic adventures.</p>
+      <button class="deploy-btn">Explore Plans Now</button>
+    </div>
+  </section>
+
+  <section class="features section-spacing">
+    <div class="container">
+      <h2>Core Features</h2>
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3>Advanced DDoS Protection</h3>
+          <p>Enterprise-grade security infrastructure guards your server against all types of attacks, ensuring continuous uptime and a smooth player experience.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Unrivaled Hardware Power</h3>
+          <p>Every server boasts <span style="color:var(--color-text-light);font-weight:bold;">AMD EPYC 9000 Series</span> processors, delivering superior multi-core performance essential for demanding Minecraft environments.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Instant Server Deployment</h3>
+          <p>Get your Minecraft server online in seconds. Our automated system means no waiting, just immediate access to your game world.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Dedicated 24/7 Support</h3>
+          <p>Our expert support team is available around the clock to provide swift assistance, ensuring your hosting experience is always optimal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plans section-spacing">
+    <div class="container">
+      <h2>Choose Your Perfect Plan</h2>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <div class="plan-title">Starter Plan</div>
+          <div class="plan-specs">
+            4 GB DDR4 RAM<br>100% CPU Access<br>8 GB NVMe SSD
+          </div>
+          <div class="plan-price">₹80 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-title">Bronze Tier</div>
+          <div class="plan-specs">
+            6 GB DDR4 RAM<br>150% CPU Access<br>16 GB NVMe SSD
+          </div>
+          <div class="plan-price">₹120 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+        <div class="plan-card highlight"> <!-- Added highlight class -->
+          <div class="plan-title">Silver Elite</div>
+          <div class="plan-specs">
+            8 GB DDR4 RAM<br>200% CPU Access<br>24 GB NVMe SSD
+          </div>
+          <div class="plan-price">₹160 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-title">Gold Champion</div>
+          <div class="plan-specs">
+            12 GB DDR4 RAM<br>250% CPU Access<br>32 GB NVMe SSD
+          </div>
+          <div class="plan-price">₹240 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-title">Platinum Legend</div>
+          <div class="plan-specs">
+            16 GB DDR4 RAM<br>300% CPU Access<br>48 GB NVMe SSD
+          </div>
+          <div class="plan-price">₹320 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-title">Diamond Realm</div>
+          <div class="plan-specs">
+            32 GB DDR4 RAM<br>350% CPU Access<br>64 GB NVMe SSD
+          </div>
+          <div class="plan-price">₹640 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-title">Infinity Core</div>
+          <div class="plan-specs">
+            64 GB DDR4 RAM<br>650% CPU Access<br>128 GB NVMe SSD
+          </div>
+          <div class="plan-price">₹1280 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-title">Custom Server</div>
+          <div class="plan-specs">
+            ∞ GB DDR4 RAM<br>∞ CPU Access<br>∞ GB NVMe SSD
+          </div>
+          <div class="plan-price">₹1300 /Month</div>
+          <button class="deploy-btn">Deploy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="epyc-note">
+    <div class="container">
+      <strong>Unleash the full potential of your Minecraft server with AMD EPYC 9000 Series for Ultimate Performance.</strong>
+    </div>
+  </div>
+
+  <section class="reviews section-spacing">
+    <div class="container">
+      <h2>What Our Players Say</h2>
+      <div class="reviews-grid">
+        <div class="review-card">"MTV Cloud delivers on performance! My server has never run smoother, even with multiple players and complex mods. Absolutely phenomenal!" - <span style="color:var(--color-secondary-accent); font-weight: 500;">vip1715</span></div>
+        <div class="review-card">"Reliable and fast setup. Customer support is always there when I need them, responding quickly and effectively. A truly professional service." - <span style="color:var(--color-secondary-accent); font-weight: 500;">Wali</span></div>
+        <div class="review-card">"Finally a host that handles high player counts without lag. The AMD EPYC processors make a huge difference. Highly recommend for serious server owners!" - <span style="color:var(--color-secondary-accent); font-weight: 500;">Vanchz</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 MTV Cloud. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
